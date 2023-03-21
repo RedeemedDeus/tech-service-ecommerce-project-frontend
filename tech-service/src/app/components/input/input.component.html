@@ -1,1 +1,29 @@
-<p>input works!</p>
+<div className='headingcontainer'>
+    <h3>Submit Tech Solution Order</h3>
+    
+    
+    <div className='bodycontainer'>
+
+            <label for="name">Your Name: </label>
+            <input [(ngModel)]="name" id="name">
+            <br> 
+            <label for="email">Requested Service: </label>
+            <app-service-dropdown id="email"></app-service-dropdown>
+            <br>
+            <label for="hours">Estimated Hours: </label>
+            <input [(ngModel)]="hours"  className="" type="text" placeholder="" id="hours">
+            <br>
+            <br>
+            <label for="message">Extra Details: </label>
+            <br>
+            <textarea rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
+            <br>
+            <br>
+            <h3>Estimated Price:</h3>
+            <a>${{price}}</a>
+            <br>
+            <br>
+            <button (click)="postOrder()">Place Order</button>
+
+    </div>
+</div>
