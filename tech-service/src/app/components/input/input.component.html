@@ -11,7 +11,7 @@
             <app-service-dropdown id="service"></app-service-dropdown>
             <br>
             <label for="hours">Estimated Hours: </label>
-            <input [(ngModel)]="hours"  className="" type="text" placeholder="" id="hours">
+            <input [(ngModel)]="hours"  (ngModelChange)="onChange()" type="text" placeholder="" id="hours">
             <br>
             <br>
             <label for="message">Extra Details: </label>

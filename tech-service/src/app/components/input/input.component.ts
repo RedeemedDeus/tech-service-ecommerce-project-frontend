@@ -20,7 +20,7 @@ export class InputComponent implements OnInit {
     
   }
 
-  ngOnChanges(){
+  onChange(){
     this.price = (this.rate)*(this.hours);
   }
 
@@ -35,7 +35,7 @@ export class InputComponent implements OnInit {
     };
 
     this.orderService.submitOrder(order).subscribe();
-    //console.log(order);
+    console.log(order);
   }
 
 
