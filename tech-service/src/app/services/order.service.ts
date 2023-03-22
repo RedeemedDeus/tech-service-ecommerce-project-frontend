@@ -19,5 +19,11 @@ export class OrderService {
     return this.http.post<Order>("http://127.0.0.1:9000/request", order, {headers:header});
   }
 
+  getAllOrders(){
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.http.post<Order[]>("http://127.0.0.1:9000/request", {headers:header});
+  }
 
 }

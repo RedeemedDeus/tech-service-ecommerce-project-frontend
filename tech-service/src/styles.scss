@@ -1,1 +1,158 @@
 /* You can add global styles to this file, and also import other style files */
+$backgrounds: #e3edf1;
+$hoverbg: #a2d1e9;
+$bgcontrast: aliceblue;
+$text: #2c2c2c;
+
+* {
+    color: $text;
+    background-color: $backgrounds;
+    margin: 0;
+    padding: 0;
+    font-family: 'Work Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none;
+}
+
+
+
+.bold {
+    font-weight: bold;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.navbase{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    padding: 0 10%;
+    width: 100%;
+    height: 100px;
+    background-color: $backgrounds;
+}
+
+.navcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10%;
+    background-color: $backgrounds;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    background-color: $backgrounds;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+nav {
+    width: 100%;
+    height: 100px;
+    background-color: $backgrounds;
+}
+
+ul {
+    background-color: $backgrounds;
+}
+
+ul li {
+    background-color: $backgrounds;
+    list-style: none;
+    display: inline-block;
+    line-height: 100px;
+}
+
+ul li a {
+    color: $text;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    padding: 0 20px;
+    background-color: $backgrounds;
+}
+
+ul li a:hover{
+    background-color: $hoverbg;
+}
+
+.rowcontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: top;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.columncontainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.techcontainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+}
+
+.bodycontent {
+    padding-top: 10%;
+    margin-left: 10%;
+    padding-bottom: 0;
+}
+
+.sidemargin{
+    margin: 0 10%;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.works {
+    padding: 5px;
+    margin-right: auto;
+    background-color: $backgrounds;
+    transition: all 0.3s ease 0s;
+    height: 300px;
+    width: auto;
+}
+
+.works:hover {
+    background-color: $bgcontrast;
+}
+
+.bgfix{
+    background-color: $bgcontrast;
+}
+
+.clickables {
+    background-color: $bgcontrast;
+    padding: 5px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+}
+
+.clickables:hover {
+    background-color: $hoverbg;
+}

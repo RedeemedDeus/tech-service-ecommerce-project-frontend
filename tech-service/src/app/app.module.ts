@@ -13,6 +13,7 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     CustomerPriceComponent,
     HomeComponent,
     LoginComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
