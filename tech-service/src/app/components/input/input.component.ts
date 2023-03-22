@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-input',
@@ -12,10 +13,15 @@ export class InputComponent implements OnInit {
   hours : number = 0;
   rate : number = 30;
   price : number = 0;
+  details : string = "";
 
-  constructor(){}
+  constructor(private orderService : OrderService){ }
   ngOnInit(): void {
     
+  }
+
+  ngOnChanges(){
+    this.price = (this.rate)*(this.hours);
   }
 
   postOrder() : void {
@@ -24,9 +30,13 @@ export class InputComponent implements OnInit {
       requestedService : this.service,
       estimatedHours : this.hours,
       hourlyRate : this.rate,
-      totalPrice : (this.rate)*(this.hours)
-    }
-    
+      totalPrice : (this.rate)*(this.hours),
+      extraDetails : this.details
+    };
+
+    this.orderService.submitOrder(order).subscribe();
+    //console.log(order);
   }
+
 
 }

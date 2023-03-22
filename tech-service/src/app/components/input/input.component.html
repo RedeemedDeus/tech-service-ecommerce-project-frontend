@@ -7,8 +7,8 @@
             <label for="name">Your Name: </label>
             <input [(ngModel)]="name" id="name">
             <br> 
-            <label for="email">Requested Service: </label>
-            <app-service-dropdown id="email"></app-service-dropdown>
+            <label for="service">Requested Service: </label>
+            <app-service-dropdown id="service"></app-service-dropdown>
             <br>
             <label for="hours">Estimated Hours: </label>
             <input [(ngModel)]="hours"  className="" type="text" placeholder="" id="hours">
@@ -16,7 +16,7 @@
             <br>
             <label for="message">Extra Details: </label>
             <br>
-            <textarea rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
+            <textarea [(ngModel)]="details" rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
             <br>
             <br>
             <h3>Estimated Price:</h3>
