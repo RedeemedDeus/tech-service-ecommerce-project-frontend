@@ -24,6 +24,10 @@ export class InputComponent implements OnInit {
     this.price = (this.rate)*(this.hours);
   }
 
+  changeService(value:any){
+    this.service = value;
+  }
+
   postOrder() : void {
     let order : Order = {
       customerName : this.name,
