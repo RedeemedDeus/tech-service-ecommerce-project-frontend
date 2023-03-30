@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-service-dropdown',
@@ -6,17 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./service-dropdown.component.scss']
 })
 export class ServiceDropdownComponent implements OnInit{
-  opt1 : string = "Tech Support";
-  opt2 : string = "Hardware Install";
-  opt3 : string = "Tech Consultation";
-  opt4 : string = "System Engineering";
+  services : Array<String> = ["Tech Support","Hardware Install","Tech Consultation","System Engineering"]
+
   selectedValue : string = "";
+  @Output()
+  selectEvent : EventEmitter<String> = new EventEmitter<String>();
 
 
   constructor(){}
 
   ngOnInit(){
 
+  }
+
+  select(){
+    this.selectEvent.emit(this.selectedValue);
   }
 
 }

@@ -24,14 +24,19 @@ export class InputComponent implements OnInit {
     this.price = (this.rate)*(this.hours);
   }
 
+  changeService(value:any){
+    this.service = value;
+  }
+
   postOrder() : void {
     let order : Order = {
-      customerName : this.name,
-      requestedService : this.service,
-      estimatedHours : this.hours,
-      hourlyRate : this.rate,
-      totalPrice : (this.rate)*(this.hours),
-      extraDetails : this.details
+      serviceType : this.service
+      // customerName : this.name,
+      // requestedService : this.service,
+      // estimatedHours : this.hours,
+      // hourlyRate : this.rate,
+      // totalPrice : (this.rate)*(this.hours),
+      // extraDetails : this.details
     };
 
     this.orderService.submitOrder(order).subscribe();

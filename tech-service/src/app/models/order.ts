@@ -1,9 +1,5 @@
 export interface Order {
-    
-    customerName? : string,
-    requestedService? : string,
-    estimatedHours? : number,
-    hourlyRate? : number,
-    totalPrice? : number,
-    extraDetails? : string
+    id?: number,
+    serviceType?: String,
+    fulfilled?: boolean
 }
