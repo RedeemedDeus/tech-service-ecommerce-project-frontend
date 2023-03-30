@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './components/order/order.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OrderComponent } from './components/order/order.component';
     HomeComponent,
     LoginComponent,
     MyOrdersComponent,
-    OrderComponent
+    OrderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
