@@ -1,5 +1,8 @@
 export interface Account {
-    username : string,
-    password : string,
-    isEngineer : boolean
+    id? : number,
+    username? : string,
+    password? : string,
+    isEngineer? : boolean,
+    secureToken? : number,
+    serviceRequest? : any
 }

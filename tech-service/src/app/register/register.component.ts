@@ -12,11 +12,12 @@ export class RegisterComponent {
   password : string = "";
   isEngineer : boolean = false;
   selectedType : string = "";
+
+  registered : boolean = false;
   
   constructor(private registerService : RegisterService){}
-  ngOnInit(){
-    
-  }
+  
+  ngOnInit(){}
 
   postAccount() : void {
     //set the type of user
