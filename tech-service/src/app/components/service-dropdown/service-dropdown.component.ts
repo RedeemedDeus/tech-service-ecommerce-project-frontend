@@ -6,10 +6,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./service-dropdown.component.scss']
 })
 export class ServiceDropdownComponent implements OnInit{
-  services : Array<string> = ["Tech Support", "Hardware Install", "Tech Consultation", "System Engineering"];
-  
-  selectedVal : string = ""
-  @Output() selectEvent : EventEmitter<string> = new EventEmitter<string>();
+  services : Array<String> = ["Tech Support","Hardware Install","Tech Consultation","System Engineering"]
+
+  selectedValue : string = "";
+  @Output()
+  selectEvent : EventEmitter<String> = new EventEmitter<String>();
 
 
   constructor(){}
@@ -19,7 +20,7 @@ export class ServiceDropdownComponent implements OnInit{
   }
 
   select(){
-    this.selectEvent.emit(this.selectedVal);
+    this.selectEvent.emit(this.selectedValue);
   }
 
 }

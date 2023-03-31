@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './components/order/order.component';
 import { RegisterComponent } from './register/register.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     MyOrdersComponent,
     OrderComponent,
     RegisterComponent
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
