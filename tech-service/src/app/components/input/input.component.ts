@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Account } from 'src/app/models/account';
 import { Details } from 'src/app/models/details';
 import { Order } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
@@ -16,7 +17,7 @@ export class InputComponent implements OnInit {
   price : number = 0;
   details : string = "";
 
-  constructor(private orderService : OrderService){ }
+  constructor(private orderService : OrderService/*, private account : Account*/){ }
   ngOnInit(): void {
     
   }
@@ -44,6 +45,7 @@ export class InputComponent implements OnInit {
     this.orderService.submitOrder(order).subscribe((ord : Order) => {
       this.orderService.submitDetails(details,ord.id).subscribe();
     });
+    
     console.log(order);
     console.log(details);
   }

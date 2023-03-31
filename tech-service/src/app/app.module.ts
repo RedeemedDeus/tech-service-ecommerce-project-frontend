@@ -29,7 +29,7 @@ import { DetailsComponent } from './details/details.component';
     LoginComponent,
     MyOrdersComponent,
     OrderComponent,
-    RegisterComponent
+    RegisterComponent,
     DetailsComponent
   ],
   imports: [
