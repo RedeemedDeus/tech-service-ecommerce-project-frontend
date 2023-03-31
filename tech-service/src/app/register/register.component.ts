@@ -5,15 +5,16 @@ import { RegisterService } from '../services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  account : Account = {};
   username : string = "";
   password : string = "";
   isEngineer : boolean = false;
   selectedType : string = "";
 
-  registered : boolean = false;
+  loggedIn : boolean = false;
   
   constructor(private registerService : RegisterService){}
   
@@ -29,12 +30,21 @@ export class RegisterComponent {
     }
 
     //full account info to post to database
-    let account : Account = {
+    this.account = {
       username : this.username,
       password : this.password,
       isEngineer : this.isEngineer
     };
-    this.registerService.submitAccount(account).subscribe();
-    console.log(account);
+    this.registerService.submitAccount(this.account).subscribe();
+
+    this.loggedIn = true;
+  }
+
+  logOut() : void {
+    alert("Log Out Successful");
+    this.account = {};
+    console.log(this.account);
+    //toggle between signing in and logging out
+    this.loggedIn = false;
   }
 }
