@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
+import { Details } from '../models/details';
 
 
 @Injectable({
@@ -17,6 +18,13 @@ export class OrderService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
     return this.http.post<Order>("http://127.0.0.1:9000/request", order, {headers:header});
+  }
+
+  submitDetails(details : Details, id : (number | undefined) ) : Observable<Order>{
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return this.http.post<Order>(`http://127.0.0.1:9000/request/${id}/details`, details, {headers:header});
   }
 
   getAllOrders(){
