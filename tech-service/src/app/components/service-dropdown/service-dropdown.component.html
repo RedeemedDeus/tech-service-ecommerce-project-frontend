@@ -1,6 +1,3 @@
-<select name="services" id="service-dropdown">
-    <option value="opt1">{{opt1}}</option>
-    <option value="opt2">{{opt2}}</option>
-    <option value="opt3">{{opt3}}</option>
-    <option value="opt4">{{opt4}}</option>
+<select (change)="select()" [(ngModel)]="selectedValue" name="services" id="service-dropdown">
+  <option *ngFor = "let service of services">{{service}}</option>
   </select>

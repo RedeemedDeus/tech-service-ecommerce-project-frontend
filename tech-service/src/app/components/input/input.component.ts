@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Details } from 'src/app/models/details';
 import { Order } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -24,18 +25,27 @@ export class InputComponent implements OnInit {
     this.price = (this.rate)*(this.hours);
   }
 
+  changeService(value:any){
+    this.service = value;
+  }
+
   postOrder() : void {
     let order : Order = {
-      customerName : this.name,
-      requestedService : this.service,
-      estimatedHours : this.hours,
-      hourlyRate : this.rate,
-      totalPrice : (this.rate)*(this.hours),
-      extraDetails : this.details
+      serviceType : this.service
     };
 
-    this.orderService.submitOrder(order).subscribe();
+    let details : Details = {
+      customerName : this.name,
+      comment : this.details,
+      hours : this.hours,
+      totalPrice : this.price
+    }
+
+    this.orderService.submitOrder(order).subscribe((ord : Order) => {
+      this.orderService.submitDetails(details,ord.id).subscribe();
+    });
     console.log(order);
+    console.log(details);
   }
 
 
