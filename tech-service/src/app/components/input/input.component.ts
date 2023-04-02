@@ -17,10 +17,12 @@ export class InputComponent implements OnInit {
   price : number = 0;
   details : string = "";
   currAccount : Account = {};
+  orders : Order[] = [];
+  loggedIn = false;
 
   constructor(private orderService : OrderService){ }
   ngOnInit(): void {
-
+    
   }
 
   onChange(){
@@ -31,8 +33,15 @@ export class InputComponent implements OnInit {
     this.service = value;
   }
 
-  setAccount(value : any){
+  isLoggedOut(value : any){
+    this.loggedIn = value;
+    this.currAccount = {};
+  }
+
+  setAccount(value : any) : void{
     this.currAccount = value;
+    this.loggedIn = true;
+    this.orderService.getAllOrders().subscribe(list => this.orders = list);
   }
 
   postOrder() : void {
@@ -52,8 +61,6 @@ export class InputComponent implements OnInit {
     });
     
     console.log(this.currAccount);
-    //console.log(order);
-    //console.log(details);
   }
 
 

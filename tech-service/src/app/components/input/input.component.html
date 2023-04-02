@@ -1,33 +1,44 @@
-<app-register (accountEvent)="setAccount($event)"></app-register>
+<app-register (accountEvent)="setAccount($event)" (logOutEvent)="isLoggedOut($event)"></app-register>
 <br><br>
-<!--Input for worker-->
+<div *ngIf="loggedIn">
+    <!--Input for worker-->
+    <div id="workerInput" *ngIf="currAccount.engineer">
+        <p>Available Tasks Choose One</p>
 
-<!--Input for user *ngIf="currAccount.isEngineer"-->
-<div className='headingcontainer' >
-    <h3>Submit Tech Solution Order</h3>
-    
-    <div className='bodycontainer'>
+        <div id="orderList" *ngFor="let order of orders">
+            <input type="radio" id="{{order.serviceType}}" value="{{order.serviceType}}">
+            <label for="{{order.serviceType}}">{{order.serviceType}}</label>
+        </div>
 
-            <label for="name">Your Name: </label>
-            <input [(ngModel)]="name" id="name">
-            <br> 
-            <label for="service">Requested Service: </label>
-            <app-service-dropdown id="service" (selectEvent)="changeService($event)"></app-service-dropdown>
-            <br>
-            <label for="hours">Estimated Hours: </label>
-            <input [(ngModel)]="hours"  (ngModelChange)="onChange()" type="text" placeholder="" id="hours">
-            <br>
-            <br>
-            <label for="message">Extra Details: </label>
-            <br>
-            <textarea [(ngModel)]="details" rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
-            <br>
-            <br>
-            <h3>Estimated Price:</h3>
-            <a>${{price}}</a>
-            <br>
-            <br>
-            <button (click)="postOrder()">Place Order</button>
+    </div>
 
+    <!--Input for user -->
+    <div className='headingcontainer' *ngIf="!currAccount.engineer">
+        <h3>Submit Tech Solution Order</h3>
+        
+        <div className='bodycontainer'>
+
+                <label for="name">Your Name: </label>
+                <input [(ngModel)]="name" id="name">
+                <br> 
+                <label for="service">Requested Service: </label>
+                <app-service-dropdown id="service" (selectEvent)="changeService($event)"></app-service-dropdown>
+                <br>
+                <label for="hours">Estimated Hours: </label>
+                <input [(ngModel)]="hours"  (ngModelChange)="onChange()" type="text" placeholder="" id="hours">
+                <br>
+                <br>
+                <label for="message">Extra Details: </label>
+                <br>
+                <textarea [(ngModel)]="details" rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
+                <br>
+                <br>
+                <h3>Estimated Price:</h3>
+                <a>${{price}}</a>
+                <br>
+                <br>
+                <button (click)="postOrder()">Place Order</button>
+
+        </div>
     </div>
 </div>

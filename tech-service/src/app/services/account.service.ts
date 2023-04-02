@@ -11,17 +11,25 @@ export class AccountService {
 
   constructor(private http : HttpClient) { }
 
-  submitAccount(account : Account) : Observable<Account>{
+  getHeader() : HttpHeaders{
     let header : HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
+    return header;
+  }
+
+  submitAccount(account : Account) : Observable<Account>{
+    let header = this.getHeader();
     return this.http.post<Account>("http://127.0.0.1:9000/account", account, {headers:header})
   }
 
   submitLogin(login : Login) : Observable<Account>{
-    let header : HttpHeaders = new HttpHeaders();
-    header.append("accept", "text/json");
-    header.append("Access-Control-Allow-Origin", "*");
+    let header = this.getHeader();
     return this.http.post<Account>("http://127.0.0.1:9000/login", login, {headers:header});
+  }
+
+  assignWork(accountId : number, requestId : number, account : Account) : Observable<Account>{
+    let header = this.getHeader();
+    return this.http.put<Account>(`http://127.0.0.1:9000/account/${accountId}/request/${requestId}`, account, {headers:header});
   }
 }
