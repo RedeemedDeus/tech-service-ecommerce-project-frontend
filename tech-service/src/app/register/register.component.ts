@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Account } from '../models/account';
-import { RegisterService } from '../services/register.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +13,11 @@ export class RegisterComponent {
   password : string = "";
   isEngineer : boolean = false;
   selectedType : string = "";
-
   loggedIn : boolean = false;
+  @Output()
+  accountEvent : EventEmitter<Account> = new EventEmitter<Account>();
   
-  constructor(private registerService : RegisterService){}
+  constructor(private accountService : AccountService){}
   
   ngOnInit(){}
 
@@ -31,11 +32,19 @@ export class RegisterComponent {
 
     //full account info to post to database
     this.account = {
+      id : undefined,
       username : this.username,
       password : this.password,
-      isEngineer : this.isEngineer
+      isEngineer : this.isEngineer,
+      secureToken : undefined,
+      serviceRequest : undefined
     };
-    this.registerService.submitAccount(this.account).subscribe();
+
+    this.accountService.submitAccount(this.account).subscribe(json =>{
+      this.account = json;
+      //account object can be accessed to input component
+      this.accountEvent.emit(this.account);
+    });
 
     this.loggedIn = true;
   }

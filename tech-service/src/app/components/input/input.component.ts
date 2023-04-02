@@ -16,10 +16,11 @@ export class InputComponent implements OnInit {
   rate : number = 30;
   price : number = 0;
   details : string = "";
+  currAccount : Account = {};
 
-  constructor(private orderService : OrderService/*, private account : Account*/){ }
+  constructor(private orderService : OrderService){ }
   ngOnInit(): void {
-    
+
   }
 
   onChange(){
@@ -28,6 +29,10 @@ export class InputComponent implements OnInit {
 
   changeService(value:any){
     this.service = value;
+  }
+
+  setAccount(value : any){
+    this.currAccount = value;
   }
 
   postOrder() : void {
@@ -46,8 +51,9 @@ export class InputComponent implements OnInit {
       this.orderService.submitDetails(details,ord.id).subscribe();
     });
     
-    console.log(order);
-    console.log(details);
+    console.log(this.currAccount);
+    //console.log(order);
+    //console.log(details);
   }
 
 
