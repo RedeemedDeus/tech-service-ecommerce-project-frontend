@@ -1,5 +1,8 @@
+import { Details } from "./details";
+
 export interface Order {
     id?: number,
     serviceType?: String,
-    fulfilled?: boolean
+    fulfilled?: boolean,
+    requestDetails?: Details[]
 }
