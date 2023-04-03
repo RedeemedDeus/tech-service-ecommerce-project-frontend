@@ -16,7 +16,7 @@ export class LoginService {
     let header : HttpHeaders = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
-    return this.http.post<Login>("http://127.0.0.1:9000/user", login, {headers:header});
+    return this.http.post<Login>("http://127.0.0.1:9000/login", login, {headers:header});
   }
 
 }
