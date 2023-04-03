@@ -1,0 +1,15 @@
+<div id="register" *ngIf="!loggedIn">
+    <h3>Register</h3>
+    <input type="text" placeholder="username" [(ngModel)]="username">
+    <input type="text" placeholder="password" [(ngModel)]="password">
+    <select id="userType" [(ngModel)]="selectedType">
+        <option value="User">User</option>
+        <option value="Worker">Worker</option>
+    </select> 
+    <button id="registerBtn" (click)="postAccount()">Register</button>
+</div>
+
+<div id="loggedIn" *ngIf="loggedIn">
+    <p>Hello {{account.username}}</p>
+    <button (click)="logOut()">Log Out</button>
+</div>
