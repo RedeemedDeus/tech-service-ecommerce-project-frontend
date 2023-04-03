@@ -2,4 +2,6 @@
 <p>{{order.id}}</p>
 <p>{{order.serviceType}}</p>
 <p>{{order.fulfilled}}</p>
-<p>{{order.details}}</p>
+<div *ngFor="let detail of detailArr">
+    <app-details [details]="detail"></app-details>
+</div>
