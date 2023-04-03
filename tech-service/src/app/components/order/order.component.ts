@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Details } from 'src/app/models/details';
 import { Order } from 'src/app/models/order';
 
 @Component({
@@ -9,10 +10,14 @@ import { Order } from 'src/app/models/order';
 export class OrderComponent {
   @Input()
   order : Order = {};
+  detailArr : any;
+  //details : Details = {};
 
-  constructor() {};
+  constructor() {}
 
   ngOnInit(){
-    
+    this.detailArr = this.order.requestDetails;
+    console.log(this.detailArr);
   }
+
 }

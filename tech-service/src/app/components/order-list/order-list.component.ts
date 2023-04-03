@@ -19,7 +19,10 @@ export class OrderListComponent {
   }
 
   refresh() : void {
-    //this.orderService.getAllOrders().subscribe(json => this.orders=json);
+    this.orderService.getAllOrders().subscribe(json => {
+      this.orders=json;
+      //console.log(json);
+    });
   }
 
 }
