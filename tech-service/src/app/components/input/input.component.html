@@ -17,7 +17,7 @@
         <h3>Submit Tech Solution Order</h3>
         
         <div className='bodycontainer'>
-
+            <form id="orderForm">
                 <label for="name">Your Name: </label>
                 <input [(ngModel)]="name" id="name">
                 <br> 
@@ -37,7 +37,9 @@
                 <a>${{price}}</a>
                 <br>
                 <br>
+            
                 <button (click)="postOrder()">Place Order</button>
+            </form>
 
         </div>
     </div>

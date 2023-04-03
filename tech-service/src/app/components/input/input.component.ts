@@ -74,8 +74,11 @@ export class InputComponent implements OnInit {
     this.orderService.submitOrder(order).subscribe((ord : Order) => {
       this.orderService.submitDetails(details,ord.id).subscribe();
     });
-    
-    //console.log(this.currAccount);
+    this.name = "";
+    this.service = "";
+    this.hours  = 0;
+    this.details = "";
+   
   }
 
 
