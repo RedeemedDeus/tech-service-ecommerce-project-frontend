@@ -19,4 +19,8 @@ export class LoginService {
     return this.http.post<Login>("http://127.0.0.1:9000/user", login, {headers:header});
   }
 
+
+//TODO more endpoints
+
+
 }
