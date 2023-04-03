@@ -47,7 +47,7 @@ export class InputComponent implements OnInit {
   }
 
   selectedRequest(request : any) : void{
-    console.log(request);
+    //console.log(request);
     for(let order of this.orders){
       if(order.serviceType == request.target.value){
         this.selectedOrder = order;

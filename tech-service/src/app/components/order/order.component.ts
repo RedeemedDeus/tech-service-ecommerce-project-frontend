@@ -11,13 +11,11 @@ export class OrderComponent {
   @Input()
   order : Order = {};
   detailArr : any;
-  //details : Details = {};
 
   constructor() {}
 
   ngOnInit(){
     this.detailArr = this.order.requestDetails;
-    console.log(this.detailArr);
   }
 
 }
