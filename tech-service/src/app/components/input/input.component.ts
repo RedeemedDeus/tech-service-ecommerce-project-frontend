@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/models/account';
 import { Details } from 'src/app/models/details';
 import { Order } from 'src/app/models/order';
+import { AccountService } from 'src/app/services/account.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -18,9 +19,10 @@ export class InputComponent implements OnInit {
   details : string = "";
   currAccount : Account = {};
   orders : Order[] = [];
+  selectedOrder : Order = {};
   loggedIn = false;
 
-  constructor(private orderService : OrderService){ }
+  constructor(private orderService : OrderService, private accountService : AccountService){ }
   ngOnInit(): void {
     
   }
@@ -44,6 +46,19 @@ export class InputComponent implements OnInit {
     this.orderService.getAllOrders().subscribe(list => this.orders = list);
   }
 
+  selectedRequest(request : any) : void{
+    console.log(request);
+    for(let order of this.orders){
+      if(order.serviceType == request.target.value){
+        this.selectedOrder = order;
+      }
+    }
+  }
+
+  assignWork(){
+    this.accountService.assignWork(this.currAccount.id, this.selectedOrder.id, this.currAccount).subscribe();
+  }
+
   postOrder() : void {
     let order : Order = {
       serviceType : this.service
@@ -60,7 +75,7 @@ export class InputComponent implements OnInit {
       this.orderService.submitDetails(details,ord.id).subscribe();
     });
     
-    console.log(this.currAccount);
+    //console.log(this.currAccount);
   }
 
 

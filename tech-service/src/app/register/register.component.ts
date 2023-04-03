@@ -35,12 +35,9 @@ export class RegisterComponent {
 
     //full account info to post to database
     this.account = {
-      id : undefined,
       username : this.username,
       password : this.password,
-      engineer : this.engineer,
-      secureToken : undefined,
-      serviceRequest : undefined
+      engineer : this.engineer
     };
     
     this.accountService.submitAccount(this.account).subscribe(json =>{
@@ -51,14 +48,20 @@ export class RegisterComponent {
     });
 
     this.loggedIn = true;
+
+    this.clearInput();
   }
 
   logOut() : void {
-    alert("Log Out Successful");
+    //alert("Log Out Successful");
     this.account = {};
     //console.log(this.account);
     //toggle between signing in and logging out
     this.loggedIn = false;
     this.logOutEvent.emit(this.loggedIn);
+  }
+
+  clearInput(){
+    console.log("clear all inputs here");
   }
 }

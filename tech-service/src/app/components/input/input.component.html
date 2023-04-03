@@ -6,10 +6,10 @@
         <p>Available Tasks Choose One</p>
 
         <div id="orderList" *ngFor="let order of orders">
-            <input type="radio" id="{{order.serviceType}}" value="{{order.serviceType}}">
+            <input type="radio" name="requests" value="{{order.serviceType}}" (change)="selectedRequest($event)">
             <label for="{{order.serviceType}}">{{order.serviceType}}</label>
         </div>
-
+        <button (click)="assignWork()">Assign Work</button>
     </div>
 
     <!--Input for user -->
