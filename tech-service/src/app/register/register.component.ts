@@ -40,7 +40,7 @@ export class RegisterComponent {
       password : this.password,
       engineer : this.engineer
     };
-    this.clearInput();
+    
     this.accountService.submitAccount(this.account).subscribe(json =>{
       this.account = json;
       //account object can be accessed to input component
@@ -49,8 +49,6 @@ export class RegisterComponent {
     });
 
     this.loggedIn = true;
-
-    //this.clearInput();
   }
 
 
