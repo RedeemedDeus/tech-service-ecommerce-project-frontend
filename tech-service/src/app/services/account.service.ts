@@ -23,9 +23,9 @@ export class AccountService {
     return this.http.post<Account>("http://127.0.0.1:9000/account", account, {headers:header})
   }
 
-  submitLogin(login : Login) : Observable<Account>{
+  submitLogin(account : Account) : Observable<Account>{
     let header = this.getHeader();
-    return this.http.post<Account>("http://127.0.0.1:9000/login", login, {headers:header});
+    return this.http.post<Account>("http://127.0.0.1:9000/login", account, {headers:header});
   }
 
   assignWork(accountId : any, requestId : any, account : Account) : Observable<Account>{
