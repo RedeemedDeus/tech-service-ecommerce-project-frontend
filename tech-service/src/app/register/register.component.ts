@@ -40,7 +40,7 @@ export class RegisterComponent {
       password : this.password,
       engineer : this.engineer
     };
-    
+    this.clearInput();
     this.accountService.submitAccount(this.account).subscribe(json =>{
       this.account = json;
       //account object can be accessed to input component
@@ -50,7 +50,7 @@ export class RegisterComponent {
 
     this.loggedIn = true;
 
-    this.clearInput();
+    //this.clearInput();
   }
 
 
@@ -97,6 +97,11 @@ export class RegisterComponent {
   }
 
   clearInput(){
-    console.log("clear all inputs here");
+    let elUname : any = document.getElementById("username") as HTMLInputElement | null;
+    elUname.value = "";
+    let elPassword : any = document.getElementById("password") as HTMLInputElement | null;
+    elPassword.value = "";
+    let elUType : any = document.getElementById("userType") as HTMLInputElement | null;
+    elUType.value = "";
   }
 }
