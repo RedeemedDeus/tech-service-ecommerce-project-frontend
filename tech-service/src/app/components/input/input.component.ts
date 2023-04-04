@@ -8,7 +8,7 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
   name : string = "";
@@ -74,12 +74,16 @@ export class InputComponent implements OnInit {
     this.orderService.submitOrder(order).subscribe((ord : Order) => {
       this.orderService.submitDetails(details,ord.id).subscribe();
     });
-    this.name = "";
-    this.service = "";
-    this.hours  = 0;
-    this.details = "";
    
+    this.clearInput();
   }
 
-
+  clearInput() : void{
+    let elName : any = document.getElementById("name") as HTMLInputElement | null;
+    elName.value = "";
+    let elHours : any = document.getElementById("hours") as HTMLInputElement | null;
+    elHours.value = "";
+    let elMessage : any = document.getElementById("message") as HTMLInputElement | null;
+    elMessage.value = "";
+  }
 }

@@ -1,6 +1,6 @@
 <app-register (accountEvent)="setAccount($event)" (logOutEvent)="isLoggedOut($event)"></app-register>
 <br><br>
-<div *ngIf="loggedIn">
+<div id="inputDiv" *ngIf="loggedIn">
     <!--Input for worker-->
     <div id="workerInput" *ngIf="currAccount.engineer">
         <p>Available Tasks Choose One</p>
@@ -19,18 +19,18 @@
         <div className='bodycontainer'>
             <form id="orderForm">
                 <label for="name">Your Name: </label>
-                <input [(ngModel)]="name" id="name">
+                <input [(ngModel)]="name" id="name" name="name">
                 <br> 
                 <label for="service">Requested Service: </label>
                 <app-service-dropdown id="service" (selectEvent)="changeService($event)"></app-service-dropdown>
                 <br>
                 <label for="hours">Estimated Hours: </label>
-                <input [(ngModel)]="hours"  (ngModelChange)="onChange()" type="text" placeholder="" id="hours">
+                <input [(ngModel)]="hours"  (ngModelChange)="onChange()" type="number" id="hours" name="hours">
                 <br>
                 <br>
                 <label for="message">Extra Details: </label>
                 <br>
-                <textarea [(ngModel)]="details" rows="10" cols="30" placeholder="Type your message here." id="message"></textarea> 
+                <textarea [(ngModel)]="details" rows="10" cols="30" placeholder="Type your message here." id="message" name="message"></textarea> 
                 <br>
                 <br>
                 <h3>Estimated Price:</h3>
