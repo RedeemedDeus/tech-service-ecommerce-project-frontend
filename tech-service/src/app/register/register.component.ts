@@ -14,6 +14,7 @@ export class RegisterComponent {
   engineer : boolean = false;
   selectedType : string = "";
   loggedIn : boolean = false;
+  loginstatus : string = "Register OR Login";
 
   @Output()
   logOutEvent : EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -48,8 +49,40 @@ export class RegisterComponent {
     });
 
     this.loggedIn = true;
+  }
 
-    this.clearInput();
+
+  logIn() : void {
+    if(this.selectedType == 'Worker'){
+      this.engineer = true;
+    }
+    else{
+      this.engineer = false;
+    }
+
+    //full account info to post to database
+    this.account = {
+      username : this.username,
+      password : this.password,
+      engineer : this.engineer
+    };
+
+    this.accountService.submitLogin(this.account).subscribe(json =>{
+      this.account = json;
+      //account object can be accessed to input component
+      //console.log(this.account);
+      this.accountEvent.emit(this.account);
+      if(json != null){
+        this.loggedIn = true;
+      }
+
+    });
+
+    
+    if(!this.loggedIn){
+      document.getElementById("loginstatus")!.innerText = "INVALID USERNAME OR PASSWORD";
+    }
+    
   }
 
   logOut() : void {
@@ -62,6 +95,11 @@ export class RegisterComponent {
   }
 
   clearInput(){
-    console.log("clear all inputs here");
+    let elUname : any = document.getElementById("username") as HTMLInputElement | null;
+    elUname.value = "";
+    let elPassword : any = document.getElementById("password") as HTMLInputElement | null;
+    elPassword.value = "";
+    let elUType : any = document.getElementById("userType") as HTMLInputElement | null;
+    elUType.value = "";
   }
 }

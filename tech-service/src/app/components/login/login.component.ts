@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Login } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -8,24 +8,14 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username : string = "";
-  password : string = "";
+  @Input()
+  login : Login = {};
 
-  constructor(private loginService : LoginService){}
+  constructor(){}
 
   ngOnInit() : void {
 
   }
 
-  postLogin() : void{
-    let login : Login = {
-      username : this.username,
-      password : this.password
-    };
-
-    this.loginService.submitLogin(login).subscribe();
-    console.log(login);
-
-  }
-
+  
 }

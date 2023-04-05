@@ -1,5 +1,6 @@
 import { Account } from "./account";
 import { Details } from "./details";
+import { Login } from "./login";
 
 export interface Order {
     id?: number,
