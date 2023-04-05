@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { Order } from '../models/order';
 import { Details } from '../models/details';
 
@@ -12,6 +12,12 @@ export class OrderService {
 
   constructor(private http : HttpClient) { }
 
+  getHeader() : HttpHeaders{
+    let header : HttpHeaders = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*");
+    return header;
+  }
 
   submitOrder(order : Order) : Observable<Order>{
     let header : HttpHeaders = new HttpHeaders();
@@ -32,6 +38,11 @@ export class OrderService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*");
     return this.http.get<Order[]>("http://127.0.0.1:9000/request", {headers:header});
+  }
+
+  changeOrderStatus(id : (number | undefined), order : Order) : Observable<Order>{
+    let header = this.getHeader();
+    return this.http.patch<Order>(`http://127.0.0.1:9000/request/${id}`, order, {headers:header});
   }
 
 }

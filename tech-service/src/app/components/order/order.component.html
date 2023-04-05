@@ -1,11 +1,13 @@
-<p>Order Details</p>
-<p>{{order.id}}</p>
-<p>Service Type: {{order.serviceType}}</p>
-<p>Fulfilled?: {{order.fulfilled}}</p>
-<div *ngFor = "let detail of detailArr">
-    <app-details [detail]="detail"></app-details>
-</div>
-<p>Currently Working On This Request:</p>
-<div *ngFor = "let account of accountArr">
-    <app-login [login]="account"></app-login>
+<div *ngIf="!order.fulfilled">
+    <p>Order Details #{{order.id}}</p>
+    <p>Service Type: {{order.serviceType}}</p>
+    <!--<p>Fulfilled?: {{order.fulfilled}}</p>-->
+    <div *ngFor = "let detail of detailArr">
+        <app-details [detail]="detail"></app-details>
+    </div>
+    <p>Currently Working On This Request:</p>
+    <div *ngFor = "let account of accountArr">
+        <app-login [login]="account"></app-login>
+        <button (click)="resolve()" id="resolveBtn">Resolve</button>
+    </div>
 </div>

@@ -56,6 +56,7 @@ export class InputComponent implements OnInit {
   }
 
   assignWork(){
+    alert(`You have been assigned: ${this.selectedOrder.serviceType}`);
     this.accountService.assignWork(this.currAccount.id, this.selectedOrder.id, this.currAccount).subscribe();
   }
 

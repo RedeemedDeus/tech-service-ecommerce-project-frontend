@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Details } from 'src/app/models/details';
 import { Order } from 'src/app/models/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -11,22 +12,21 @@ export class OrderComponent {
   @Input()
   order : Order = {};
   detailArr : any;
-<<<<<<< HEAD
-=======
   accountArr : any;
-  //details : Details = {};
->>>>>>> main
 
-  constructor() {}
+  constructor(private orderService : OrderService) {}
 
   ngOnInit(){
     this.detailArr = this.order.requestDetails;
-<<<<<<< HEAD
-=======
-    console.log(this.detailArr);
+    //console.log(this.detailArr);
     this.accountArr = this.order.accounts;
-    console.log(this.accountArr);
->>>>>>> main
+    //console.log(this.accountArr);
+  }
+
+  resolve() : void {
+    alert("Request has been resolved!");
+    this.order.fulfilled = true;
+    this.orderService.changeOrderStatus(this.order.id, this.order).subscribe(json => console.log(json));
   }
 
 }
