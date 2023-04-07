@@ -20,16 +20,16 @@ export class AccountService {
 
   submitAccount(account : Account) : Observable<Account>{
     let header = this.getHeader();
-    return this.http.post<Account>("http://127.0.0.1:9000/account", account, {headers:header})
+    return this.http.post<Account>("http://52.53.165.37:9000/account", account, {headers:header})
   }
 
   submitLogin(account : Account) : Observable<Account>{
     let header = this.getHeader();
-    return this.http.post<Account>("http://127.0.0.1:9000/login", account, {headers:header});
+    return this.http.post<Account>("http://52.53.165.37:9000/login", account, {headers:header});
   }
 
   assignWork(accountId : any, requestId : any, account : Account) : Observable<Account>{
     let header = this.getHeader();
-    return this.http.put<Account>(`http://127.0.0.1:9000/account/${accountId}/request/${requestId}`, account, {headers:header});
+    return this.http.put<Account>(`http://52.53.165.37:9000/account/${accountId}/request/${requestId}`, account, {headers:header});
   }
 }
